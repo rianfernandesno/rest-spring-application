@@ -1,12 +1,10 @@
 package br.com.yui.services;
 
-import br.com.yui.data.dto.v1.PersonDTO;
-import br.com.yui.data.dto.v2.PersonDTOV2;
+import br.com.yui.data.dto.PersonDTO;
 import br.com.yui.exception.ResourceNotFoundException;
 import static br.com.yui.mapper.ObjectMapper.parseListObjects;
 import static br.com.yui.mapper.ObjectMapper.parseObject;
 
-import br.com.yui.mapper.custom.PersonMapper;
 import br.com.yui.model.Person;
 import br.com.yui.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -25,9 +23,6 @@ public class PersonServices {
 
     @Autowired
     PersonRepository repository;
-
-    @Autowired
-    PersonMapper converter;
 
     public List<PersonDTO> findAll() {
 
@@ -52,13 +47,6 @@ public class PersonServices {
         return parseObject(repository.save(entity), PersonDTO.class);
     }
 
-    public PersonDTOV2 createV2(PersonDTOV2 person) {
-
-        logger.info("Creating one Person!");
-        var entity = converter.convertDTOToEntity(person);
-
-        return converter.convertEntityToDTO(repository.save(entity));
-    }
 
     public PersonDTO update(PersonDTO person) {
 

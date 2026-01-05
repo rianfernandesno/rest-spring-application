@@ -1,7 +1,7 @@
 package br.com.yui.unitetests.mocks;
 
 
-import br.com.yui.data.dto.v1.PersonDTO;
+import br.com.yui.data.dto.PersonDTO;
 import br.com.yui.model.Person;
 
 import java.util.ArrayList;

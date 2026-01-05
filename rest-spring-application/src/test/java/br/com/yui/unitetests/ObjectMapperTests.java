@@ -4,7 +4,7 @@ import static br.com.yui.mapper.ObjectMapper.parseListObjects;
 import static br.com.yui.mapper.ObjectMapper.parseObject;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import br.com.yui.data.dto.v1.PersonDTO;
+import br.com.yui.data.dto.PersonDTO;
 import br.com.yui.model.Person;
 import br.com.yui.unitetests.mocks.MockPerson;
 import org.junit.jupiter.api.BeforeEach;
