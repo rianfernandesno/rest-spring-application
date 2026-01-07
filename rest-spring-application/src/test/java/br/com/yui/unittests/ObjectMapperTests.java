@@ -1,4 +1,4 @@
-package br.com.yui.unitetests;
+package br.com.yui.unittests;
 
 import static br.com.yui.mapper.ObjectMapper.parseListObjects;
 import static br.com.yui.mapper.ObjectMapper.parseObject;
@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import br.com.yui.data.dto.PersonDTO;
 import br.com.yui.model.Person;
-import br.com.yui.unitetests.mapper.mocks.MockPerson;
+import br.com.yui.unittests.mapper.mocks.MockPerson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

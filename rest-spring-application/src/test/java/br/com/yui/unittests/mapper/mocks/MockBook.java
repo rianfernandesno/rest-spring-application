@@ -1,4 +1,4 @@
-package br.com.yui.unitetests.mapper.mocks;
+package br.com.yui.unittests.mapper.mocks;
 
 
 import java.util.ArrayList;

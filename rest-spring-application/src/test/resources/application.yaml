@@ -1,0 +1,20 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: rest-spring-application
+  datasource:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    open-in-view: false
+
+logging:
+    level:
+      # root: WARN
+      br.com.yui: DEBUG
+springdoc:
+  paths-to-match: /api/**/v1/**
+  swagger-ui:
+    use-root-path: true
