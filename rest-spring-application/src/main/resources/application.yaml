@@ -1,5 +1,7 @@
 cors:
   originPatterns: http://localhost:8080,http://localhost:3000,https://github.com/rianfernandesno
+file:
+  upload-dir: /Users/Rian/code/UploadDir
 spring:
   application:
     name: rest-spring-application
@@ -12,7 +14,12 @@ spring:
       ddl-auto: none
     show-sql: false
     open-in-view: false
-
+servlet:
+  multipart:
+    enabled: true
+    file-size-threshold: 2KB
+    max-file-size: 200MB
+    max-request-size: 215MB
 logging:
     level:
       # root: WARN
