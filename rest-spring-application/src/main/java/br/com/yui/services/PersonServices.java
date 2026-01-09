@@ -10,7 +10,7 @@ import static br.com.yui.mapper.ObjectMapper.parseObject;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import br.com.yui.file.exporter.contract.FileExporter;
+import br.com.yui.file.exporter.contract.PersonExporter;
 import br.com.yui.file.exporter.factory.FileExporterFactory;
 import br.com.yui.file.importer.contract.FileImporter;
 import br.com.yui.file.importer.factory.FileImporterFactory;
@@ -34,6 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
+
 
 
 @Service
@@ -69,17 +70,6 @@ public class PersonServices {
         return buildPagedModel(pageable, people);
     }
 
-    public PersonDTO findById(Long id) {
-        logger.info("Finding one Person!");
-
-        var entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
-        var dto =  parseObject(entity, PersonDTO.class);
-        addHateoasLinks(dto);
-        return dto;
-    }
-
-
     public Resource exportPage(Pageable pageable, String acceptHeader) {
 
         logger.info("Exporting a People page!");
@@ -89,11 +79,36 @@ public class PersonServices {
                 .getContent();
 
         try {
-            FileExporter exporter = this.exporter.getExporter(acceptHeader);
-            return exporter.exportFile(people);
+            PersonExporter exporter = this.exporter.getExporter(acceptHeader);
+            return exporter.exportPeople(people);
         } catch (Exception e) {
             throw new RuntimeException("Error during file export!", e);
         }
+    }
+
+    public Resource exportPerson(Long id, String acceptHeader) {
+        logger.info("Exporting data of one Person!");
+
+        var person = repository.findById(id)
+                .map(entity -> parseObject(entity, PersonDTO.class))
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+
+        try {
+            PersonExporter exporter = this.exporter.getExporter(acceptHeader);
+            return exporter.exportPerson(person);
+        } catch (Exception e) {
+            throw new RuntimeException("Error during file export!", e);
+        }
+    }
+
+    public PersonDTO findById(Long id) {
+        logger.info("Finding one Person!");
+
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+        var dto =  parseObject(entity, PersonDTO.class);
+        addHateoasLinks(dto);
+        return dto;
     }
 
     public PersonDTO create(PersonDTO person) {
