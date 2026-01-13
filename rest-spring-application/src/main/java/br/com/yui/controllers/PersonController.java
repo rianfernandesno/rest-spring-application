@@ -3,12 +3,11 @@ package br.com.yui.controllers;
 import br.com.yui.controllers.docs.PersonControllerDocs;
 import br.com.yui.data.dto.PersonDTO;
 import br.com.yui.file.exporter.MediaTypes;
-import br.com.yui.services.PersonServices;
+import br.com.yui.services.PersonService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -31,7 +30,7 @@ import java.util.Map;
 public class PersonController implements PersonControllerDocs {
 
     @Autowired
-    private PersonServices service;
+    private PersonService service;
 
     @GetMapping(produces = {
             MediaType.APPLICATION_JSON_VALUE,

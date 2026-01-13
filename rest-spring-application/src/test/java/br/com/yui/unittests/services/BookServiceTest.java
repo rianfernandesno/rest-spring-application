@@ -1,15 +1,12 @@
 package br.com.yui.unittests.services;
 
 import br.com.yui.data.dto.BookDTO;
-import br.com.yui.data.dto.BookDTO;
 import br.com.yui.exception.RequiredObjectIsNullException;
 import br.com.yui.model.Book;
-import br.com.yui.model.Book;
 import br.com.yui.repository.BookRepository;
-import br.com.yui.services.BookServices;
+import br.com.yui.services.BookService;
 import br.com.yui.unittests.mapper.mocks.MockBook;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,7 +23,6 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.PagedModel;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,12 +31,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)
-class BookServicesTest {
+class BookServiceTest {
 
     MockBook input;
 
     @InjectMocks
-    private BookServices service;
+    private BookService service;
 
     @Mock
     BookRepository repository;
