@@ -1,6 +1,5 @@
 package br.com.yui.integrationtests.dto;
 
-
 import br.com.yui.model.Book;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
