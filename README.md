@@ -22,7 +22,10 @@ O projeto utiliza **Java 21** e está estruturado com as seguintes tecnologias:
 * **Spring Data JPA**: Abstração da camada de dados e persistência.
 * **MySQL**: Banco de dados relacional.
 * **Flyway Migration**: Controle de versionamento do esquema do banco de dados.
-* **Dozer Mapper**: Mapeamento inteligente entre Entidades e DTOs.
+* **Dozer Mapper**: Mapeamento entre Entidades e DTOs.
+
+> [!WARNING]
+> **Aviso sobre o Dozer Mapper:** O projeto Dozer está atualmente descontinuado (deprecated). Para projetos em produção, recomenda-se o uso de alternativas mais modernas e performáticas, como **MapStruct** ou **ModelMapper**, que oferecem melhor suporte ao Java 21 e menor overhead.
 
 ### 📊 Relatórios e Documentos
 * **JasperReports**: Motor para geração de relatórios complexos e exportação em PDF.
