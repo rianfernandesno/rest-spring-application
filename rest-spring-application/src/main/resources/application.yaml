@@ -2,6 +2,11 @@ cors:
   originPatterns: http://localhost:8080,http://localhost:3000,https://github.com/rianfernandesno
 file:
   upload-dir: /Users/Rian/code/UploadDir
+security:
+  jwt:
+    token:
+      secret-key: 53er37
+      expire-length: 3600000
 email:
   subject: "Default subject"
   message: "Default message"

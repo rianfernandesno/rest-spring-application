@@ -10,13 +10,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+
 @Entity
 @Table(name = "users")
 public class User implements UserDetails, Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    private User(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,22 +43,22 @@ public class User implements UserDetails, Serializable {
     private Boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "user_permission",
-        joinColumns = @JoinColumn(name = "id_user"),
-        inverseJoinColumns = @JoinColumn(name = "id_permission")
+    @JoinTable(name = "user_permission",
+            joinColumns = {@JoinColumn (name = "id_user")},
+            inverseJoinColumns = {@JoinColumn (name = "id_permission")}
     )
     private List<Permission> permissions;
 
+    public User() {}
+
     public List<String> getRoles(){
         List<String> roles = new ArrayList<>();
-
-        for (Permission permission : permissions){
+        for (Permission permission : permissions) {
             roles.add(permission.getDescription());
         }
-
         return roles;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.permissions;

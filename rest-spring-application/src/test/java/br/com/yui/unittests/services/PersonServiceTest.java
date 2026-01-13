@@ -4,7 +4,7 @@ import br.com.yui.data.dto.PersonDTO;
 import br.com.yui.exception.RequiredObjectIsNullException;
 import br.com.yui.model.Person;
 import br.com.yui.repository.PersonRepository;
-import br.com.yui.services.PersonServices;
+import br.com.yui.services.PersonService;
 import br.com.yui.unittests.mapper.mocks.MockPerson;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -33,12 +33,12 @@ import static org.mockito.Mockito.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)
-class PersonServicesTest {
+class PersonServiceTest {
 
     MockPerson input;
 
     @InjectMocks
-    private PersonServices service;
+    private PersonService service;
 
     @Mock
     PersonRepository repository;
